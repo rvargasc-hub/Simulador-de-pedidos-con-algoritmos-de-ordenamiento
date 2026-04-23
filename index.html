@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Compilacion Visual - Pedidos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar-shell">
+      <div class="brand-card panel">
+        <span class="eyebrow">SortLab Studio</span>
+        <h1>Simulador de Pedidos</h1>
+        <p>Panel interactivo para analizar algoritmos de ordenamiento de pedidos en tiempo real.</p>
+      </div>
+
+      <section class="panel controls">
+        <div class="section-heading">
+          <span class="section-tag">Centro de control</span>
+          <h2>Menu</h2>
+        </div>
+
+        <div class="control-grid">
+          <label>Algoritmo
+            <select id="algorithm">
+              <option value="bubble">Bubble Sort</option>
+              <option value="selection">Selection Sort</option>
+              <option value="insertion">Insertion Sort</option>
+              <option value="shell">Shell Sort</option>
+              <option value="quick">Quick Sort</option>
+              <option value="merge">Merge Sort</option>
+              <option value="heap">Heap Sort</option>
+            </select>
+          </label>
+
+          <label>Codigo a mostrar
+            <select id="language">
+              <option value="cpp">C++</option>
+              <option value="py">Python</option>
+            </select>
+          </label>
+
+          <label>Tipo de entrada
+            <select id="inputMode">
+              <option value="random">Aleatoria</option>
+              <option value="partial">Parcialmente ordenada</option>
+            </select>
+          </label>
+
+          <label>Arreglo a ordenar
+            <select id="arraySelect">
+              <option value="produccion">Tiempo de Produccion (min)</option>
+              <option value="entrega">Tiempo de Entrega (min)</option>
+              <option value="prioridad">Prioridad (1-5)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="range-card">
+          <label>Velocidad de simulacion <span class="inline-value" id="speedValue">120</span></label>
+          <input id="speed" type="range" min="20" max="500" step="10" value="120" />
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn">Generar</button>
+          <button id="startBtn">Iniciar</button>
+          <button id="resetBtn">Reiniciar</button>
+        </div>
+      </section>
+    </aside>
+
+    <main class="main-shell">
+      <section class="hero panel">
+        <div class="hero-copy">
+          <span class="section-tag">Vista general</span>
+          <h2>Monitoreo del proceso de ordenamiento</h2>
+          <p>Observa el arreglo activo, el comportamiento del algoritmo y los indicadores de ejecucion desde una interfaz mas clara y profesional.</p>
+        </div>
+
+        <div class="metrics-grid stats">
+          <p><strong>Comparaciones</strong> <span id="comparisons">0</span></p>
+          <p><strong>Intercambios</strong>  <span id="swaps">0</span></p>
+          <p><strong>Escrituras</strong>    <span id="writes">0</span></p>
+          <p><strong>Tiempo aprox.</strong> <span id="approxTime">0.00 ms</span></p>
+          <p><strong>Tiempo real</strong>   <span id="realTime">0.00 ms</span></p>
+          <p><strong>Paso</strong>          <span id="stepCounter">0 / 0</span></p>
+        </div>
+      </section>
+
+      <section class="visual-workspace">
+        <section class="panel visual visual-main">
+          <div class="panel-topline">
+            <div>
+              <span class="section-tag">Visualizador</span>
+              <h2>Arreglo — <span id="arrayTitle">Tiempo de Produccion</span></h2>
+            </div>
+          </div>
+
+          <div id="bars" class="bars"></div>
+
+          <div class="legend legend-pills">
+            <span><i class="dot base"></i>Normal</span>
+            <span><i class="dot compare"></i>Comparando</span>
+            <span><i class="dot swap"></i>Intercambio</span>
+            <span><i class="dot write"></i>Escritura</span>
+          </div>
+        </section>
+
+        <section class="panel table-panel floating-panel">
+          <div class="panel-topline compact">
+            <div>
+              <span class="section-tag">Pedidos</span>
+              <h2>Estado actual</h2>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table id="ordersTable" class="orders-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Prod. (min)</th>
+                  <th>Entrega (min)</th>
+                  <th>Prioridad</th>
+                </tr>
+              </thead>
+              <tbody id="ordersBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel code code-full">
+        <div class="panel-topline">
+          <div>
+            <span class="section-tag">Codigo</span>
+            <h2>Ejecucion linea por linea</h2>
+          </div>
+        </div>
+        <pre id="codeBlock" class="codeBlock"></pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
