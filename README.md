@@ -78,7 +78,7 @@ El sistema está diseñado como un panel profesional:
 
 ---
 
-## ▶ Cómo ejecutar
+##  Cómo ejecutar
 
 1. Descargar o clonar el repositorio
 2. Abrir el archivo `index.html` en el navegador
